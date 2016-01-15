@@ -1,5 +1,13 @@
 # Sample .travis.yml for R projects
 
 language: r
+bioc_required: true
+r_packages:
+  - matrixStats
+  - reshape2
+  - knitr
+  - testthat
+bioc_packages:
+  - survcomp
 warnings_are_errors: true
 sudo: required
