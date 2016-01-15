@@ -8,7 +8,7 @@ Description: Methods for ranking genes based on convergent evidence obtained
 Depends: R (>= 3.2.3)
 License: Artistic-2.0
 biocViews: GeneExpression, SNP, CopyNumberVariation, Microarray, Sequencing, Software, Genetics
-Suggests: knitr, testthat
+Suggests: knitr, rmarkdown, testthat
 Imports: matrixStats, reshape2, survcomp
 VignetteBuilder: knitr
 LazyData: true
