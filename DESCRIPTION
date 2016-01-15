@@ -8,9 +8,9 @@ Description: Methods for ranking genes based on convergent evidence obtained
 Depends: R (>= 3.2.3)
 License: Artistic-2.0
 biocViews: GeneExpression, SNP, CopyNumberVariation, Microarray, Sequencing, Software, Genetics
-Suggests: knitR, testthat
+Suggests: knitr, testthat
 Imports: matrixStats, reshape2, survcomp
-VignetteBuilder: knitR
+VignetteBuilder: knitr
 LazyData: true
 RoxygenNote: 5.0.1
 URL: https://github.com/chakri9/GenRank
