@@ -1,26 +1,27 @@
-#' Convergent evidence based on rank product method. 
+#' Convergent evidence based on rank product method.
 #'
 #' @description \code{ComputeRP} returns ranks of the genes based on rank product method.
 #'
-#' @param file A tab-delimited text file with a minimum of 3 columns. First column should 
+#' @param file A tab-delimited text file with a minimum of 3 columns. First column should
 #'   contain gene names, second column should indicate the evidence type and third column
-#'   should contain non-negative numeric values (e.g. p-values or effect size). 
-#' @param signif.type A vector containing letters 'L' or 'H' or both. Length of the vector 
-#'   should be the same as the number of evidence types. 'L' or 'H' indicate whether the 
+#'   should contain non-negative numeric values (e.g. p-values or effect size).
+#' @param signif.type A vector containing letters 'L' or 'H' or both. Length of the vector
+#'   should be the same as the number of evidence types. 'L' or 'H' indicate whether the
 #'   evidence type contains a low numeric value (e.g. p-value) or a high numeric value
 #'   (e.g. effect size).
 #' @param n.perm A number indicating number of permutations used to calculate null
-#'   density. 
+#'   density.
 #'   Defaults to 100 permutations.
-#' @param setseed An optional argument. If provided a numeric value, sampling will be put 
-#'   in a reproducible state using the setseed value as seed. 
-#' @return If all the inputs are in the correct format as suggested, then the output will 
+#' @param setseed An optional argument. If provided a numeric value, sampling will be put
+#'   in a reproducible state using the setseed value as seed.
+#' @return If all the inputs are in the correct format as suggested, then the output will
 #'   be a dataframe containg genes, their ranks based on RP and corresponding pfp
 #'   (equivalent to FDR).
 #' @examples
+#' input_file <- system.file("extdata","CE_RP_toydata.txt",package="GenRank")
 #' signif.val <- c('L','L','H','L','H','L')
-#' ComputeRP('ex_input.txt', signif.val)
-#' ComputeRP('ex_input.txt', signif.val, n.perm=200, setseed=1234)
+#' RP_ranks <- ComputeRP(input_file, signif.type = signif.val)
+#' RP_ranks_cust <- ComputeRP(input_file, signif.type = signif.val, n.perm=200, setseed=1234)
 #' @export
 #' @importFrom matrixStats rowProds
 
@@ -89,4 +90,4 @@ ComputeRP <- function(file, signif.type, n.perm = 100, setseed = NULL) {
     # (equivalent to FDR) and return gene list ordered by top ranks
     top.genes <- ComputePFP(ranks.matrix, n.perm, observed.rp)
     return(top.genes)
-} 
+}

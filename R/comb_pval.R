@@ -1,23 +1,24 @@
-#' Convergent evidence based on combined p-values. 
+#' Convergent evidence based on combined p-values.
 #'
 #' @description \code{CombP} returns ranks of the genes based on p-values combined using
 #'   the famous 'fisher' or 'z-transform' methods.
 
-#' @param file A tab-delimited text file with a minimum of 3 columns. First column should 
+#' @param file A tab-delimited text file with a minimum of 3 columns. First column should
 #'   contain gene names, second column should indicate the evidence type and third column
-#'   should contain non-negative numeric values (p-values). 
-#' @param weight A numeric vector containing weights of evidence types. For example, 
+#'   should contain non-negative numeric values (p-values).
+#' @param weight A numeric vector containing weights of evidence types. For example,
 #'   sample sizes of various evidence types. If not provided, equal weight is given to all
-#'   evidence types.  
+#'   evidence types.
 #' @param method A character string among 'fisher', 'z.transform' or 'logit'.
-#' @param na.remove An optional argument, defaults to FALSE. Set this argument to TRUE if 
-#'   all the genes were not detected across all evidence types. 
-#' @return If all the inputs are in the correct format as suggested, then the output will 
+#' @param na.remove An optional argument, defaults to FALSE. Set this argument to TRUE if
+#'   all the genes were not detected across all evidence types.
+#' @return If all the inputs are in the correct format as suggested, then the output will
 #'   be a dataframe containg genes, their combined p-values and corresponding ranks.
 #' @examples
 #' cus.weights <- c(100,50,200,300,150,400)
-#' CombP('ex_input.txt', method='fisher')
-#' CombP('ex_input.txt', weight = cus.weights, method='z.transform', na.remove = TRUE)
+#' input_file_P <- system.file("extdata","CombP_toydata.txt",package="GenRank")
+#' CP_ranking <- CombP(input_file_P, method = "fisher", na.remove = TRUE)
+#' CP_ranking_z <- CombP(input_file_P, method = "z.transform", na.remove = TRUE, weight = cus.weights)
 #' @export
 #' @importFrom reshape2 dcast
 #' @importFrom survcomp combine.test
@@ -74,7 +75,7 @@ CombP <- function(file, weight, method = c("fisher", "z.transform", "logit"), na
     	stop("NAs were present because genes were not detected across all evidence layers. Set na.remove=TRUE")
     }
     # check whether p-values are available for at least 60% of evidence types
-    CheckValid <- function(pvalrow) if (length(which(!is.na(pvalrow)))/length(pvalrow) > 
+    CheckValid <- function(pvalrow) if (length(which(!is.na(pvalrow)))/length(pvalrow) >
         0.6) {
         TRUE
     } else {
@@ -105,4 +106,4 @@ CombP <- function(file, weight, method = c("fisher", "z.transform", "logit"), na
     comb.pval <- comb.pval[order(comb.pval[, 3]), ]
     rownames(comb.pval) <- NULL
     return(comb.pval)
-} 
+}

@@ -8,21 +8,21 @@ CombP(file, weight, method = c("fisher", "z.transform", "logit"),
   na.remove = FALSE)
 }
 \arguments{
-\item{file}{A tab-delimited text file with a minimum of 3 columns. First column should 
+\item{file}{A tab-delimited text file with a minimum of 3 columns. First column should
 contain gene names, second column should indicate the evidence type and third column
 should contain non-negative numeric values (p-values).}
 
-\item{weight}{A numeric vector containing weights of evidence types. For example, 
+\item{weight}{A numeric vector containing weights of evidence types. For example,
 sample sizes of various evidence types. If not provided, equal weight is given to all
 evidence types.}
 
 \item{method}{A character string among 'fisher', 'z.transform' or 'logit'.}
 
-\item{na.remove}{An optional argument, defaults to FALSE. Set this argument to TRUE if 
+\item{na.remove}{An optional argument, defaults to FALSE. Set this argument to TRUE if
 all the genes were not detected across all evidence types.}
 }
 \value{
-If all the inputs are in the correct format as suggested, then the output will 
+If all the inputs are in the correct format as suggested, then the output will
   be a dataframe containg genes, their combined p-values and corresponding ranks.
 }
 \description{
@@ -31,7 +31,8 @@ If all the inputs are in the correct format as suggested, then the output will
 }
 \examples{
 cus.weights <- c(100,50,200,300,150,400)
-CombP('ex_input.txt', method='fisher')
-CombP('ex_input.txt', weight = cus.weights, method='z.transform', na.remove = TRUE)
+input_file_P <- system.file("extdata","CombP_toydata.txt",package="GenRank")
+CP_ranking <- CombP(input_file_P, method = "fisher", na.remove = TRUE)
+CP_ranking_z <- CombP(input_file_P, method = "z.transform", na.remove = TRUE, weight = cus.weights)
 }
 

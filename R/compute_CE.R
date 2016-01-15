@@ -4,17 +4,18 @@
 #'
 #' @param file A tab-delimited text file with a minimum of 2 columns. First column should
 #'   contain gene names and second column should indicate the evidence type.
-#' @param PC A character string among 'equal', 'ngene' or 'custom' indicating the prior 
+#' @param PC A character string among 'equal', 'ngene' or 'custom' indicating the prior
 #'   credibility.
-#' @param cust.weights An optional argument required when the PC='custom'. A numeric 
-#'   vector containing weights reflecting prior credibility. Should contain as many 
+#' @param cust.weights An optional argument required when the PC='custom'. A numeric
+#'   vector containing weights reflecting prior credibility. Should contain as many
 #'   weights as the number of evidence types.
 #' @return If all the inputs are in the correct format as suggested, then the output will
 #'   be a dataframe containing genes and their ranks based on CE scores.
 #' @examples
-#' ComputeCE('ex_input.txt', 'equal')
-#' evid.weight <- c(1,1,0.8,0.8,0.5,1) 
-#' ComputeCE('ex_input.txt', 'custom', cust.weights = evid.weight)
+#' input_file <- system.file("extdata","CE_RP_toydata.txt",package="GenRank")
+#' CE_ranks <- ComputeCE(input_file,PC = "equal")
+#' evid.weight <- c(1,1,0.8,0.8,0.5,1)
+#' CE_ranks_cust <- ComputeCE(input_file,PC = "custom", cust.weights = evid.weight)
 #' @export
 
 # ComputeCE function computes convergent evidence scores (CE) of genes and returns
@@ -73,4 +74,4 @@ ComputeCE <- function(file, PC = c("equal", "ngene", "custom"), cust.weights = N
     rownames(rank.CE) <- NULL
     colnames(rank.CE) <- c("Gene", "CE Score", "Rank")
     return(rank.CE)
-} 
+}
