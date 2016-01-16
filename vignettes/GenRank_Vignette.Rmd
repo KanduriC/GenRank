@@ -42,7 +42,7 @@ The required input file format is quite straightforward. A tab-delimited text fi
 ```{r, echo=FALSE}
 library(GenRank)
 input_file <- system.file("extdata","CE_RP_toydata.txt",package="GenRank")
-toydata <- read.table(input_file,header=F, sep = '\t')
+toydata <- read.table(input_file,header=FALSE, sep = '\t')
 head(toydata)
 ```
 
@@ -62,7 +62,7 @@ We use the `ComputeCE` function in this package to compute convergent evidence s
 ```{r, echo=FALSE}
 library(GenRank)
 input_file <- system.file("extdata","CE_RP_toydata.txt",package="GenRank")
-toydata <- read.table(input_file,header=F, sep = '\t')
+toydata <- read.table(input_file,header=FALSE, sep = '\t')
 head(toydata[,1:2])
 ```
 

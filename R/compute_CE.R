@@ -31,7 +31,7 @@ ComputeCE <- function(file, PC = c("equal", "ngene", "custom"), cust.weights = N
         stop("PC can only be one among 'equal', 'ngene' and 'custom'")
     }
     PC <- match.arg(PC)
-    file1 <- read.table(file, header = F, sep = "\t", stringsAsFactors = FALSE)
+    file1 <- read.table(file, header = FALSE, sep = "\t", stringsAsFactors = FALSE)
     if (ncol(file1) < 2) {
         stop("file should contain at least 2 columns")
     }

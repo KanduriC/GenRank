@@ -39,7 +39,7 @@ ComputeRP <- function(file, signif.type, n.perm = 100, setseed = NULL) {
     if (!all(class(n.perm) == "numeric")) {
         stop("number of permutations (n.perm) should be numeric")
     }
-    file1 <- read.table(file, header = F, sep = "\t", stringsAsFactors = FALSE)
+    file1 <- read.table(file, header = FALSE, sep = "\t", stringsAsFactors = FALSE)
     # Uses a vectorized row product function from matrixStats package
     if (!requireNamespace("matrixStats", quietly = TRUE)) {
         stop("matrixStats package needed for this function to work. Please install it.")

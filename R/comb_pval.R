@@ -46,7 +46,7 @@ CombP <- function(file, weight, method = c("fisher", "z.transform", "logit"), na
     if (!all(method %in% c("fisher", "z.transform", "logit"))) {
         stop("method can only be one among 'fisher', 'z.transform' and 'logit'")
     }
-    file1 <- read.table(file, header = F, sep = "\t", stringsAsFactors = FALSE)
+    file1 <- read.table(file, header = FALSE, sep = "\t", stringsAsFactors = FALSE)
     if (ncol(file1) < 3) {
         stop("file should contain at least 3 columns")
     }
