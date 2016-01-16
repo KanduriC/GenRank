@@ -44,7 +44,7 @@ ComputeRP <- function(file, signif.type, n.perm = 100, setseed = NULL) {
     if (!requireNamespace("matrixStats", quietly = TRUE)) {
         stop("matrixStats package needed for this function to work. Please install it.")
     }
-    require(matrixStats)
+    requireNamespace("matrixStats")
     if (ncol(file1) < 3) {
         stop("file should contain at least 3 columns")
     }

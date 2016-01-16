@@ -35,8 +35,8 @@ CombP <- function(file, weight, method = c("fisher", "z.transform", "logit"), na
     if (!requireNamespace("survcomp", quietly = TRUE)) {
         stop("survcomp package needed for this function to work. Please install it.")
     }
-    require(reshape2)
-    require(survcomp)
+    requireNamespace("reshape2")
+    requireNamespace("survcomp")
     if (missing(file)) {
         stop("No file provided as input")
     }
