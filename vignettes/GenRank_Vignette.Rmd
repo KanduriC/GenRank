@@ -10,7 +10,7 @@ output:
     css: custom.css
     theme: journal
     toc: yes
-vignette: 
+vignette: >
     %\VignetteIndexEntry{Introduction to GenRank Package}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
