@@ -3,10 +3,10 @@ title: "Introduction to GenRank Package"
 author: "Chakravarthi Kanduri, chakra.kanduri@gmail.com"
 date: '`r Sys.Date()`'
 output:
-  pdf_document:
+  rmarkdown::pdf_vignette:
     number_sections: yes
     toc: yes
-  html_document:
+  rmarkdown::html_vignette:
     css: custom.css
     theme: journal
     toc: yes
