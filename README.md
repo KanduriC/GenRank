@@ -15,6 +15,10 @@ For detailed information and tutorials, see the package vignette.
 ```r
 library(devtools)
 # if you don't have the package, run install.packages("devtools")
-install_github("chakri9/GenRank")
+install_github("chakri9/GenRank", build_vignettes = TRUE)
 ```
+
+### Note about vignettes
+
+The above installation instructions will build the vignette, which can be viewed by the command ```browseVignettes(package="GenRank")```. However, these instructions seem to work only with Rstudio at the moment because of the Pandoc intgration. If you are not using Rstudio, you can still follow the above instructions except for `build_vignettes = FALSE`. 
 ***
